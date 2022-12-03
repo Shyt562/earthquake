@@ -5,7 +5,7 @@ module.exports = {
     name: "love",
     aliases: ["affinity"],
     category: "fun",
-    description: "Calculates the love affinity you have for another person.",
+    description: "計算你對另一個人的愛的親和力。",
     usage: "[mention | id | username]",
     run: async (client, message, args) => {
         // Get a member from mention, id, or username
@@ -23,7 +23,7 @@ module.exports = {
 
         const embed = new RichEmbed()
             .setColor("#ffb6c1")
-            .addField(`☁ **${person.displayName}** loves **${message.member.displayName}** this much:`,
+            .addField(`☁ **${person.displayName}** 喜歡 **${message.member.displayName}** this much:`,
             `💟 ${Math.floor(love)}%\n\n${loveLevel}`);
 
         message.channel.send(embed);
