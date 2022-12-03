@@ -6,13 +6,13 @@ const chooseArr = ["🗻", "📰", "✂"];
 module.exports = {
     name: "rps",
     category: "fun",
-    description: "Rock Paper Scissors game. React to one of the emojis to play the game.",
+    description: "石頭剪刀布遊戲。對其中一個表情符號做出反應以玩遊戲。",
     usage: "rps",
     run: async (client, message, args) => {
         const embed = new RichEmbed()
             .setColor("#ffffff")
             .setFooter(message.guild.me.displayName, client.user.displayAvatarURL)
-            .setDescription("Add a reaction to one of these emojis to play the game!")
+            .setDescription("添加對這些表情符號之一的反應來玩遊戲！")
             .setTimestamp();
 
         const m = await message.channel.send(embed);
@@ -33,11 +33,11 @@ module.exports = {
             if ((me === "🗻" && clientChosen === "✂") ||
                 (me === "📰" && clientChosen === "🗻") ||
                 (me === "✂" && clientChosen === "📰")) {
-                    return "You won!";
+                    return "你贏了！";
             } else if (me === clientChosen) {
-                return "It's a tie!";
+                return "這是一個平局！";
             } else {
-                return "You lost!";
+                return "你輸了！";
             }
         }
     }
