@@ -7,13 +7,13 @@ module.exports = {
     name: "instagram",
     aliases: ["insta"],
     category: "info",
-    description: "Find out some nice instagram statistics",
+    description: "找出一些不錯的 Instagram 統計數據",
     usage: "<name>",
     run: async (client, message, args) => {
         const name = args.join(" ");
 
         if (!name) {
-            return message.reply("Maybe it's useful to actually search for someone...!")
+            return message.reply("也許實際搜索某人有用...!")
                 .then(m => m.delete(5000));
         }
 
@@ -24,7 +24,7 @@ module.exports = {
         try {
             res = await fetch(url).then(url => url.json());
         } catch (e) {
-            return message.reply("I couldn't find that account... :(")
+            return message.reply("我找不到那個賬號... :(")
                 .then(m => m.delete(5000));
         }
 
@@ -35,13 +35,13 @@ module.exports = {
             .setTitle(account.full_name)
             .setURL(`https://instagram.com/${name}`)
             .setThumbnail(account.profile_pic_url_hd)
-            .addField("Profile information", stripIndents`**- Username:** ${account.username}
-            **- Full name:** ${account.full_name}
-            **- Biography:** ${account.biography.length == 0 ? "none" : account.biography}
-            **- Posts:** ${account.edge_owner_to_timeline_media.count}
-            **- Followers:** ${account.edge_followed_by.count}
-            **- Following:** ${account.edge_follow.count}
-            **- Private account:** ${account.is_private ? "Yes 🔐" : "Nope 🔓"}`);
+            .addField("Profile information", stripIndents`**- 用戶名:** ${account.username}
+            **- 全名:** ${account.full_name}
+            **- 傳:** ${account.biography.length == 0 ? "沒有任何" : account.biography}
+            **- 貼文:** ${account.edge_owner_to_timeline_media.count}
+            **- 追蹤者:** ${account.edge_followed_by.count}
+            **- 下列的:** ${account.edge_follow.count}
+            **- 私人賬戶:** ${account.is_private ? "是 🔐" : "不是 🔓"}`);
 
         message.channel.send(embed);
     }
