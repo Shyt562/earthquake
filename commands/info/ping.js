@@ -1,11 +1,11 @@
 module.exports = {
     name: "ping",
-    description: "Returns latency and API ping",
+    description: "查看API延遲",
     run: async (client, message, args) => {
-        const msg = await message.channel.send(`🏓 Pinging....`);
+        const msg = await message.channel.send(`🏓 計算中....`);
 
-        msg.edit(`🏓 Pong!
-        Latency is ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms
-        API Latency is ${Math.round(client.ping)}ms`);
+        msg.edit(`🏓 Ping!
+        延遲是 ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}秒
+        API延遲 is ${Math.round(client.ping)}秒`);
     }
 }
