@@ -5,7 +5,7 @@ module.exports = {
     name: "help",
     aliases: ["h"],
     category: "info",
-    description: "Returns all commands, or one specific command info",
+    description: "返回所有命令，或一個特定的命令信息",
     usage: "[command | alias]",
     run: async (client, message, args) => {
         if (args[0]) {
@@ -39,19 +39,19 @@ function getCMD(client, message, input) {
 
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
     
-    let info = `No information found for command **${input.toLowerCase()}**`;
+    let info = `找不到命令的信息 **${input.toLowerCase()}**`;
 
     if (!cmd) {
-        return message.channel.send(embed.setColor("RED").setDescription(info));
+        return message.channel.send(embed.setColor("紅色的").setDescription(info));
     }
 
-    if (cmd.name) info = `**Command name**: ${cmd.name}`;
-    if (cmd.aliases) info += `\n**Aliases**: ${cmd.aliases.map(a => `\`${a}\``).join(", ")}`;
-    if (cmd.description) info += `\n**Description**: ${cmd.description}`;
+    if (cmd.name) info = `**命令名稱**: ${cmd.name}`;
+    if (cmd.aliases) info += `\n**別名**: ${cmd.aliases.map(a => `\`${a}\``).join(", ")}`;
+    if (cmd.description) info += `\n**描述**: ${cmd.description}`;
     if (cmd.usage) {
-        info += `\n**Usage**: ${cmd.usage}`;
+        info += `\n**用法**: ${cmd.usage}`;
         embed.setFooter(`Syntax: <> = required, [] = optional`);
     }
 
-    return message.channel.send(embed.setColor("GREEN").setDescription(info));
+    return message.channel.send(embed.setColor("綠色").setDescription(info));
 }
