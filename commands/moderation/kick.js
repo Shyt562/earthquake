@@ -81,14 +81,14 @@ module.exports = {
 
                 toKick.kick(args.slice(1).join(" "))
                     .catch(err => {
-                        if (err) return message.channel.send(`好吧……踢球沒有成功。這是錯誤 ${err}`)
+                        if (err) return message.channel.send(`好吧……踢沒有成功。這是錯誤 ${err}`)
                     });
 
                 logChannel.send(embed);
             } else if (emoji === "❌") {
                 msg.delete();
 
-                message.reply(`取消踢球.`)
+                message.reply(`取消踢.`)
                     .then(m => m.delete(10000));
             }
         });
